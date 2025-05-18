@@ -1,7 +1,6 @@
 import { db } from "../DB/mongo-db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { ObjectId } from "mongodb";
 
 // User Collection data
 export const userCollections = db.collection("users");

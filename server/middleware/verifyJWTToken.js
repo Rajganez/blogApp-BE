@@ -5,7 +5,7 @@ dotenv.config();
 
 // Middleware configuration
 export const verifyToken = async (req, res, next) => {
-  const token = req.cookie.jwt;
+  const token = req.cookies.jwt;
   if (!token) {
     return res.status(400).send({ msg: "Unauthorized" });
   }
