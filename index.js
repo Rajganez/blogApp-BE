@@ -7,12 +7,18 @@ import authRouters from "./server/routes/authRouters.js";
 const app = express();
 await connectToDB;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.use(express.json());
 
 // Define Routes
-app.use("/auth", authRouters)
+app.use("/auth", authRouters);
 // Establish Server Connection
 app.listen(
   5000,
