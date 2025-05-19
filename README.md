@@ -1,46 +1,87 @@
-## Description : 
-Create a backend for the blogging app
+# 📝 Blog Backend API
 
-1. Store the user email, password
-2. Login with email and generate the jwt session
-3. Store the blogs in the blogDB with the userId
-4. get /blogs get all the blogs
+This is the backend API for a blogging platform, built with **Node.js**, **Express.js**, and **MongoDB Atlas**. The application supports secure user authentication and full CRUD operations for blog posts.
 
-How to store the blogs in the blogs collection ? 
-1. store with the below data along with the userId store the 
+## 🚀 Features
 
-1. Create the 20 dummy blogs and feed to the DB with
-const categoryToSelect = [
-    "Personal Development",
-    "Health & Fitness",
-    "Food & Recipes",
-    "Travel",
-    "Finance & Money Management",
-    "Technology",
-    "Parenting & Family",
-    "Education / Study Tips",
-    "Fashion & Beauty",
-    "Lifestyle",
-    "Career & Job Search",
-    "Entrepreneurship / Startups",
-    "Digital Marketing",
-    "Photography",
-    "DIY & Crafts",
-    "Gaming",
-    "Book Reviews",
-    "Movies & TV Shows",
-    "Pet Care",
-    "Sustainability / Eco-Living",
-  ];
-   {
-   topic: string,
-   category: String,
-   author: Ganez
-   content: String,
-   userId: 682970713b006f9883358fc0,
-   createdAt: Date,
-   updatedAt: Date
-   }
-2. And perform filter options for the rendered blogs
-3. Render the blogs with the sequence of createdAt date
-4. In My blogs section display the blogs of the logged user
+### ✅ Authentication
+
+- User registration and login with **JWT** token-based authentication.
+- Passwords securely encrypted using **bcryptjs**.
+- All API routes (except signup/login) require a valid JWT token.
+
+### ✅ Blog Management
+
+- Users can:
+  - Create, Read, Update, and Delete their own blogs.
+  - View all blogs from all users (read-only).
+- Blogs can be filtered by **category** and/or **author**.
+
+---
+
+## 🔐 Authentication Endpoints
+
+| Method | Route          | Description                 |
+| ------ | -------------- | --------------------------- |
+| POST   | `/auth/signup` | Register a new user         |
+| POST   | `/auth/login`  | Login and receive JWT token |
+
+---
+
+## 📘 Blog Endpoints
+
+> ⚠️ All blog routes are protected — only logged-in users can access them.
+
+| Method | Route                                             | Description                               |
+| ------ | ------------------------------------------------- | ----------------------------------------- |
+| GET    | `/blogs`                                          | Get all blogs                             |
+| GET    | `/blogs/filter?category=:category&author=:author` | Filter blogs by category and/or author    |
+| POST   | `/blogs`                                          | Create a new blog (user only)             |
+| PUT    | `/blogs/:id`                                      | Update a blog (only by the blog’s author) |
+| DELETE | `/blogs/:id`                                      | Delete a blog (only by the blog’s author) |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Node.js** – Runtime environment
+- **Express.js** – Web framework
+- **MongoDB Atlas** – Cloud-hosted NoSQL database
+- **Mongoose** – MongoDB object modeling
+- **bcryptjs** – Password hashing
+- **jsonwebtoken** – JWT-based authentication
+- **dotenv** – Environment variable management
+- **cors** – Cross-origin request support
+
+---
+
+## 🔧 Setup Instructions
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Rajganez/blogApp-BE
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Create .env file**
+
+   ```bash
+   DB_PASS="your Password"
+   DB_USER="your user name"
+   DB_CLUSTER="your cluster"
+   DB_NAME="your DB name"
+   JWT_KEY=your_jwt_secret_key
+
+   ```
+
+4. **Start the Server**
+
+   ```bash
+   npm start
+   ```

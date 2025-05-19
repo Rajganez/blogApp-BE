@@ -75,7 +75,11 @@ export const logIn = async (req, res) => {
     const isPasswordMatch = await bcrypt.compare(password, getUser.Password);
     if (isPasswordMatch) {
       res.cookie("jwt", createJWT(getUser.email, getUser._id), cookieOptions);
-      return res.status(200).json({ msg: "Logged in successfully" });
+      return res.status(200).json({
+        msg: "Logged in successfully",
+        id: getUser._id,
+        name: getUser.Name,
+      });
     } else {
       return res.status(401).json({ msg: "Password not match" });
     }
