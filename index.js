@@ -4,7 +4,9 @@ import cors from "cors";
 import authRouters from "./server/routes/authRouters.js";
 import blogRouters from "./server/routes/blogRoutes.js";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv"
 
+dotenv.config();
 // Initialize express and connect with DB
 const app = express();
 await connectToDB;
@@ -13,7 +15,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })

@@ -1,4 +1,4 @@
-# 📝 Blog Backend API
+# 📝 Blogcom Backend API
 
 This is the backend API for a blogging platform, built with **Node.js**, **Express.js**, and **MongoDB Atlas**. The application supports secure user authentication and full CRUD operations for blog posts.
 
